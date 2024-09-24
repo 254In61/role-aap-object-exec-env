@@ -1,2 +1,2 @@
-# role-aap-object-exec-env
-Ansible tole to build AAP exec env object
+# role-aap-object-credential
+Ansible role to build AAP credential objects
