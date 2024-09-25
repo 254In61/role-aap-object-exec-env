@@ -75,6 +75,7 @@ custom_network:
         name: role-aap-object-exec-env
       vars:
         build: true
+        in_list: "{{ item }}"
       loop:
         - "{{ f5 }}"
         - "{{ custom_network }}"
