@@ -10,7 +10,7 @@
     state: "present"
     # organization: left blank so that it becomes Globally available.
     pull: "{{ in_list[5] }}" # Incase image is updated at source
-  ignore_erros: true
+  ignore_errors: true
 
 # NB: After this successfully runs, you need to ensure the associated 
 # credential has "Verify SSL" unselected!
