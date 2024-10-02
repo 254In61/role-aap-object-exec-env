@@ -1,7 +1,7 @@
 ---
 galaxy_info:
   role_name: role-aap-object-exec-env
-  author: 254In61
+  author: Allan Maseghe - Redhat
   description: contains tasks to create exec-env AAP object
   license: MIT
   min_ansible_version: "2.11"
