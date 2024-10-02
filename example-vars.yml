@@ -1,0 +1,27 @@
+---
+private_quay_namespace: aap-exec-env
+private_quay_host: "{{ lookup('env', 'PRIVATE_QUAY_HOST') }}"
+private_quay_root_name: "{{ private_quay_host }}/{{ private_quay_namespace }}"
+private_quay_credential_name: "{{ private_quay_credential[0] }}"
+validate_certs: false
+pull_state: "always"
+
+f5_exec_env_name: f5-exec-env
+custom_network_exec_env_name: custom-network-exec-env
+
+
+f5:
+  - "{{ f5_exec_env_name }}"
+  - "{{ private_quay_root_name }}/{{ f5_exec_env_name }}"
+  - "{{ common_description }}"
+  - "{{ private_quay_credential_name }}"
+  - "{{ validate_certs }}"
+  - "{{ pull_state }}"
+
+custom_network:
+  - "{{ custom_network_exec_env_name }}"
+  - "{{ private_quay_root_name }}/{{ custom_network_exec_env_name }}"
+  - "{{ common_description }}"
+  - "{{ private_quay_credential_name }}"
+  - "{{ validate_certs }}"
+  - "{{ pull_state }}"

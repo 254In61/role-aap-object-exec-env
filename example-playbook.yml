@@ -1,0 +1,28 @@
+---
+- name: Playbook to configure AAP
+  hosts: localhost
+  gather_facts: false
+ 
+  pre_tasks:
+    - name: Include specific project variables
+      ansible.builtin.include_vars:
+        dir: group_vars
+
+  tasks:
+    !
+    !
+    - name: Import role-aap-object-exec-env
+      ansible.builtin.include_role:
+        name: role-aap-object-exec-env
+      vars:
+        build: true
+        in_list: "{{ item }}"
+      loop:
+        - "{{ f5 }}"
+        - "{{ custom_network }}"
+        - "{{ cins_network }}"
+        - "{{ fortios }}"
+        - "{{ junos }}"
+        - "{{ mcn }}"
+    !
+    !
