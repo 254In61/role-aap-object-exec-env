@@ -15,14 +15,19 @@
       ansible.builtin.include_role:
         name: role-aap-object-exec-env
       vars:
-        build: true
-        in_list: "{{ item }}"
+        build: false
+        name: "{{ item }}-exec-env"
+        image_fqn: "{{ private_quay_root_name }}/{{ item }}-exec-env"
+        description: "{{ common_description }}"
+        registry_credential: "{{ private_quay_credential_name }}"
+        validate_certs: false
+        pull_state: "always"
       loop:
-        - "{{ f5 }}"
-        - "{{ custom_network }}"
-        - "{{ cins_network }}"
-        - "{{ fortios }}"
-        - "{{ junos }}"
-        - "{{ mcn }}"
+        - f5
+        - fbb
+        - custom-network
+        - fortios
+        - junos
+        - mcn
     !
     !
