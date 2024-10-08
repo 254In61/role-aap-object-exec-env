@@ -1,15 +1,15 @@
 ---
 # Define an execution environment
-- name: "Build {{ in_list[0] }} execution environment"
+- name: "Build {{ name }} execution environment"
   ansible.controller.execution_environment:
-    name: "{{ in_list[0] }}"
-    image: "{{ in_list[1] }}"
-    description: "{{ in_list[2] }}"
-    credential: "{{ in_list[3] }}"
-    validate_certs: "{{ in_list[4] }}"
+    name: "{{ name }}"
+    image: "{{ image_fqn }}"
+    description: "{{ description }}"
+    credential: "{{ registry_credential }}"
+    validate_certs: "{{ validate_certs }}"
     state: "present"
     # organization: left blank so that it becomes Globally available.
-    pull: "{{ in_list[5] }}" # Incase image is updated at source
+    pull: "{{ pull_state }}" # Incase image is updated at source
   ignore_errors: true
 
 # NB: After this successfully runs, you need to ensure the associated 
